@@ -1,4 +1,5 @@
 
+import state.GumballMachine;
 import сomposite.Menu;
 import сomposite.MenuComponent;
 import сomposite.MenuItem;
@@ -9,22 +10,21 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        MenuComponent pancakeHouseMenu = new Menu("PANCAKE HOUSE MENU", "Breakfast");
-        MenuComponent dinerMenu = new Menu("DINER MENU", "Lunch");
-        MenuComponent cafeMenu = new Menu("CAFE MENU", "Dinner");
-        MenuComponent dessertMenu = new Menu("DESSERT MENU", "Dessert of course!");
+        GumballMachine gumballMachine = new GumballMachine(5);
 
-        MenuComponent allMenus = new Menu("ALL MENUS", "All menus combined");
+        System.out.println(gumballMachine);
 
-        allMenus.add(pancakeHouseMenu);
-        allMenus.add(dinerMenu);
-        allMenus.add(cafeMenu);
+        gumballMachine.insertQuarter();
+        gumballMachine.turnCrank();
 
-        dinerMenu.add(new MenuItem("Pasta", "Spaghetti with Marinara Souce, and a slice of sourdough bread", true, 3.89));
-        dinerMenu.add(dessertMenu);
+        System.out.println(gumballMachine);
 
-        Waitress waitress = new Waitress(allMenus);
-        waitress.printMenu();
+        gumballMachine.insertQuarter();
+        gumballMachine.turnCrank();
+        gumballMachine.insertQuarter();
+        gumballMachine.turnCrank();
+
+        System.out.println(gumballMachine);
 
     }
 

@@ -31,7 +31,7 @@ public class CompositeIterator implements Iterator {
             Iterator iterator = (Iterator) stack.peek();
             MenuComponent component = (MenuComponent) iterator.next();
             if (component instanceof Menu) {
-                stack.push(((Menu) component).createIterator());
+                stack.push(component.createIterator());
             }
             return component;
         } else {
