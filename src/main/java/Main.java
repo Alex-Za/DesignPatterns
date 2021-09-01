@@ -1,31 +1,16 @@
 
-import state.GumballMachine;
-import сomposite.Menu;
-import сomposite.MenuComponent;
-import сomposite.MenuItem;
-import сomposite.Waitress;
+import compound_patterns.DuckSimulator;
+import compound_patterns.abstract_factory.AbstractDuckFactory;
+import compound_patterns.abstract_factory.CountingDuckFactory;
 
 import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        DuckSimulator duckSimulator = new DuckSimulator();
+        AbstractDuckFactory duckFactory = new CountingDuckFactory();
 
-        GumballMachine gumballMachine = new GumballMachine(5);
-
-        System.out.println(gumballMachine);
-
-        gumballMachine.insertQuarter();
-        gumballMachine.turnCrank();
-
-        System.out.println(gumballMachine);
-
-        gumballMachine.insertQuarter();
-        gumballMachine.turnCrank();
-        gumballMachine.insertQuarter();
-        gumballMachine.turnCrank();
-
-        System.out.println(gumballMachine);
-
+        duckSimulator.simulate(duckFactory);
     }
 
 
