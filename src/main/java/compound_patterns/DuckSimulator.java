@@ -6,6 +6,7 @@ import compound_patterns.composite.Flock;
 import compound_patterns.decorator.QuackCounter;
 import compound_patterns.entity.*;
 import compound_patterns.interfaces.Quackable;
+import compound_patterns.observable.Quackologist;
 
 public class DuckSimulator {
 
@@ -18,6 +19,7 @@ public class DuckSimulator {
 
         Flock flockOfDucks = new Flock();
 
+        flockOfDucks.add(mallardDuck);
         flockOfDucks.add(redheadDuck);
         flockOfDucks.add(duckCall);
         flockOfDucks.add(rubberDuck);
@@ -42,6 +44,12 @@ public class DuckSimulator {
 
         System.out.println("\nDuck Simulator: Mallard Flock Simulation");
         simulate(flockOfMallards);
+
+        System.out.println("\nDuck Simulator: With Observer");
+        Quackologist quackologist = new Quackologist();
+        flockOfDucks.registerObserver(quackologist);
+
+        simulate(flockOfDucks);
 
         System.out.println("The duck quacked " + QuackCounter.getQuacks() + " times");
     }
